@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angular Pipes Demo</title>
+  <style>
+    /* --- 1. Global Reset & Variables --- */
+    :root {
+      --primary: #3f51b5;
+      --secondary: #f50057;
+      --bg-color: #f0f2f5;
+      --card-bg: #ffffff;
+      --text-main: #333333;
+      --text-muted: #666666;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+
+    /* --- 2. Layout Container --- */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+
+    h1.page-title {
+      text-align: center;
+      margin-bottom: 40px;
+      color: var(--primary);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    /* --- 3. General Card Styling --- */
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border-top: 4px solid var(--primary);
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 {
+      margin-bottom: 16px;
+      font-size: 1.25rem;
+      color: var(--primary);
+      border-bottom: 1px solid #eee;
+      padding-bottom: 8px;
+    }
+
+    .card div, .card p {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    /* ------ UPDATED IMAGE STYLING ------ */
+    .card-img {
+      width: 100%;
+      /* Height increased from 150px to 300px for a bigger poster look */
+      height: 300px;
+      object-fit: cover; /* Ensures the image fills the area without stretching */
+      border-radius: 8px;
+      margin-bottom: 15px;
+      background-color: #eee;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+    }
+    /* ----------------------------------- */
+
+
+    /* --- 4. Specific Receipt Styling --- */
+    .card.receipt {
+      background-color: #fffdf0;
+      font-family: 'Courier New', Courier, monospace;
+      border-top: none;
+      border-bottom: 4px jagged #ccc;
+      position: relative;
+      max-width: 350px;
+      margin: 0 auto;
+    }
+
+    .card.receipt::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      right: 0;
+      height: 10px;
+      background: linear-gradient(45deg, transparent 33.333%, #fffdf0 33.333%, #fffdf0 66.667%, transparent 66.667%),
+                  linear-gradient(-45deg, transparent 33.333%, #fffdf0 33.333%, #fffdf0 66.667%, transparent 66.667%);
+      background-size: 20px 40px;
+    }
+
+    .receipt-title {
+      text-align: center;
+      color: #000 !important;
+      border: none !important;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .store-name {
+      text-align: center;
+      font-size: 0.8rem;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .divider {
+      border-bottom: 2px dashed #bbb;
+      margin: 10px 0;
+    }
+
+    .receipt-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .receipt-row.total {
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .receipt-footer {
+      text-align: center;
+      font-size: 0.75rem;
+      margin-top: 15px;
+      opacity: 0.7;
+    }
+
+    /* --- 5. JSON Code Block Styling --- */
+    pre {
+      background: #2d2d2d;
+      color: #76ff03;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.85rem;
+    }
+
+    .ng-bind {
+      color: var(--secondary);
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="page-title">Angular Pipes Showcase</h1>
+
+  <div class="container">
+
+    <div class="card">
+      <h3>Date Pipe</h3>
+      <div>Today's date: <span class="ng-bind">{{presentDate | date }}</span></div>
+      <div>
+        <p>Short date: <span class="ng-bind">{{presentDate | date: 'shortDate' }}</span></p>
+        <p>Full date: <span class="ng-bind">{{presentDate | date: 'fullDate' }}</span></p>
+        <p>Formatted (M/dd/yyyy): <span class="ng-bind">{{presentDate | date:'M/dd/yyyy'}}</span></p>
+        <p>Hours/Minutes: <span class="ng-bind">{{presentDate | date:'h:mm'}}</span></p>
+        <br>
+        <small style="color:var(--text-muted)">User: Justin Miranda</small>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Chained Pipes</h3>
+      <div>
+        <p>Uppercase Date: <br> <span class="ng-bind">{{presentDate | date: 'fullDate' | uppercase}}</span></p>
+        <hr style="border:0; border-top:1px solid #eee; margin:10px 0;">
+        <p>Lowercase Date: <br> <span class="ng-bind">{{presentDate | date: 'medium' | lowercase}}</span></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Async Pipe</h3>
+      <div>
+        <p>Seconds changing in Time:</p>
+        <h2 class="ng-bind" style="color:var(--secondary)">{{ time$ | async | date:'mediumTime'}}</h2>
+      </div>
+    </div>
+
+    <div class="card receipt">
+      <h3 class="receipt-title">RECEIPT</h3>
+      <p class="store-name">Justin Raymond P. Miranda</p>
+
+      <div class="divider"></div>
+
+      <div class="receipt-row">
+        <span>Item Price</span>
+        <span class="ng-bind">{{ price | currency }}</span>
+      </div>
+
+      <div class="receipt-row">
+        <span>Price (INR)</span>
+        <span class="ng-bind">{{ price | currency:'INR' }}</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="receipt-row total">
+        <span>TOTAL</span>
+        <span class="ng-bind">{{ price | currency }}</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <p class="receipt-footer">
+        <span class="ng-bind">{{ presentDate | date:'medium' }}</span> <br />
+        Thank you Killa!
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Slice Pipe</h3>
+      <div>
+        <p>Start index (2): <span class="ng-bind">{{Fruits | slice:2}}</span></p>
+        <p>Start(1) & end(4): <span class="ng-bind">{{Fruits | slice:1:4}}</span></p>
+        <p>Negative index (-2): <span class="ng-bind">{{Fruits | slice: -2}}</span></p>
+        <p>Negative start/end: <span class="ng-bind">{{Fruits | slice: -4:-2}}</span></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Decimal Pipe</h3>
+      <div style="font-size: 1.5rem; font-weight: bold; color: var(--text-main);">
+        <p>{{decimalNum1 | number}}</p>
+        <p>{{decimalNum2 | number}}</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Percent Pipe</h3>
+      <p>Default percentage: <span class="ng-bind">{{ decimalNum1 | percent }}</span></p>
+      <p>Two decimal places: <span class="ng-bind">{{ decimalNum1 | percent:'1.2-2' }}</span></p>
+      <p>Another value: <span class="ng-bind">{{ decimalNum2 | percent:'1.1-1' }}</span></p>
+    </div>
+
+    <div class="card">
+      <h3>Title Case Pipe</h3>
+      <img src="https://m.media-amazon.com/images/M/MV5BMDYwOTY0NTItNDdmZi00MjBhLWEyNzEtMTM1ZGQxMzc0NDVlXkEyXkFqcGc@._V1_.jpg" alt="Title Case Example" class="card-img">
+      <p style="text-align: center; font-weight: 600;">Movie Title: <span class="ng-bind">{{value | titlecase}}</span></p>
+    </div>
+
+    <div class="card" style="grid-column: span 1;">
+      <h3>JSON Pipe</h3>
+      <pre>{{ emp | json }}</pre>
+    </div>
+
+  </div>
+</body>
+</html>
