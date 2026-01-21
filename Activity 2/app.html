@@ -1,0 +1,127 @@
+<div class="app-container">
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-content">
+      <h1>Company Hub</h1>
+      <p class="subtitle">Employee & Product Management Dashboard</p>
+    </div>
+    <div class="stats-container">
+      <div class="stat-card">
+        <div class="stat-icon">👥</div>
+        <div class="stat-info">
+          <div class="stat-number">{{ employees.length }}</div>
+          <div class="stat-label">Employees</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📦</div>
+        <div class="stat-info">
+          <div class="stat-number">{{ products.length }}</div>
+          <div class="stat-label">Products</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">💰</div>
+        <div class="stat-info">
+          <div class="stat-number">${{ getTotalValue() }}</div>
+          <div class="stat-label">Total Value</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Employees Section -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="icon">👩‍💼</span>
+          Employees
+        </h2>
+        <button class="add-button">+ Add Employee</button>
+      </div>
+
+      <div class="card">
+        <div class="list-container">
+          @for (employee of employees; track employee.id) {
+          <div class="list-item">
+            <div class="item-id">#{{ employee.id }}</div>
+            <div class="item-content">
+              <div class="item-title">{{ employee.firstname }} {{ employee.lastname }}</div>
+              <div class="item-subtitle">{{ employee.email }}</div>
+            </div>
+            <div class="item-actions">
+              <button class="action-btn" title="View Profile">
+                👤
+              </button>
+              <button class="action-btn" title="Send Email">
+                ✉️
+              </button>
+            </div>
+          </div>
+          } @empty {
+          <div class="empty-state">
+            No employees found
+          </div>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="icon">🛒</span>
+          Products
+        </h2>
+        <button class="add-button">+ Add Product</button>
+      </div>
+
+      <div class="card">
+        <div class="list-container">
+          @for (product of products; track product.productId) {
+          <div class="list-item">
+            <div class="item-id">#{{ product.productId }}</div>
+            <div class="item-content">
+              <div class="item-title">{{ product.name }}</div>
+              <div class="item-subtitle">{{ product.description }}</div>
+            </div>
+            <div class="item-price">
+              ${{ product.price.toFixed(2) }}
+            </div>
+            <div class="item-actions">
+              <button class="action-btn" title="View Details">
+                📊
+              </button>
+              <button class="action-btn" title="Edit">
+                ✏️
+              </button>
+            </div>
+          </div>
+          } @empty {
+          <div class="empty-state">
+            No products found
+          </div>
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <p>© {{ currentYear }} Company Hub. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#" class="footer-link">Privacy</a>
+        <a href="#" class="footer-link">Terms</a>
+        <a href="#" class="footer-link">Help</a>
+        <a href="#" class="footer-link">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <router-outlet></router-outlet>
+</div>
