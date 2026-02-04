@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@700&family=Ubuntu+Condensed&display=swap');
+
+:host {
+  display: block;
+  background-color: #050505;
+  min-height: 100vh;
+  color: #fff;
+  font-family: 'Ubuntu Condensed', sans-serif;
+  overflow-x: hidden;
+}
+
+/* --- Layout Centering --- */
+.home-viewport {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 4rem 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* --- Stranger Title --- */
+.home-header {
+  margin-bottom: 4rem;
+}
+
+.stranger-title {
+  font-family: 'Crimson Text', serif;
+  font-size: clamp(3.5rem, 10vw, 6rem);
+  text-transform: uppercase;
+  color: #db202c;
+  line-height: 0.8;
+  margin: 0;
+  text-shadow: 0 0 15px rgba(219, 32, 44, 0.8), 0 0 30px rgba(219, 32, 44, 0.4);
+  animation: flickerTitle 5s infinite;
+}
+
+.header-accent {
+  height: 2px;
+  background: #db202c;
+  width: 150px;
+  margin: 15px auto;
+  box-shadow: 0 0 10px #db202c;
+}
+
+/* --- Updates Panel --- */
+.updates-panel {
+  width: 100%;
+}
+
+.section-label {
+  color: #444;
+  letter-spacing: 5px;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.timestamp {
+  font-family: monospace;
+  color: #db202c;
+  font-size: 0.85rem;
+  margin-bottom: 3rem;
+}
+
+/* --- Post Cards --- */
+.post-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.post-card {
+  background: rgba(15, 15, 15, 0.8);
+  border: 1px solid #222;
+  margin-bottom: 1.5rem;
+  padding: 2rem;
+  position: relative;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+}
+
+.post-card:hover {
+  transform: scale(1.02);
+  border-color: #db202c;
+  background: #0a0a0a;
+}
+
+.post-title {
+  display: block;
+  font-family: 'Crimson Text', serif;
+  font-size: 1.8rem;
+  color: #eee;
+  margin-bottom: 0.75rem;
+}
+
+.post-body {
+  color: #888;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+/* Red accent bar that appears on hover */
+.red-flicker-bar {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: #db202c;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.post-card:hover .red-flicker-bar {
+  opacity: 1;
+  box-shadow: 0 0 15px #db202c;
+}
+
+/* --- Atmospheric FX --- */
+.vignette-mask {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, transparent 30%, #000 120%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes flickerTitle {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 22%, 24%, 55% { opacity: 0.5; }
+}

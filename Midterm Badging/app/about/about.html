@@ -1,0 +1,75 @@
+<div class="upside-down-about">
+  <div class="vhs-overlay"></div>
+
+  <div class="centering-wrapper">
+    <section class="dossier-header">
+      <div class="header-seal">TOP SECRET</div>
+      <h1 class="st-logo-text">{{ heading | uppercase }}</h1>
+      <p class="hlab-id">DEPT OF ENERGY // PROJECT INDIGO</p>
+      <div class="blood-line"></div>
+    </section>
+
+    <section class="folder-content">
+      <div class="dossier-card">
+        <div class="glitch-title">
+          <span class="prefix">SUBJECT:</span> WHAT WE OFFER
+        </div>
+        <p class="typewriter-text">
+          This portal provides the community with updates and service offerings in one central place.
+          Records indicate real-time monitoring of all local services.
+        </p>
+
+        <div class="nodes-grid">
+          <div class="node-box">
+            <div class="node-icon">01</div>
+            <h3>LATEST UPDATES</h3>
+            <p>Real-time intercept of community signals.</p>
+          </div>
+          <div class="node-box">
+            <div class="node-icon">02</div>
+            <h3>ALL SERVICES</h3>
+            <p>Access the laboratory service catalog.</p>
+          </div>
+          <div class="node-box">
+            <div class="node-icon">03</div>
+            <h3>SUPPORT</h3>
+            <p>Direct channel to Lab personnel.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="system-time">
+      <div class="monitor-frame">
+        <div class="crt-glow"></div>
+        <h3>SYSTEM_CLOCK</h3>
+        <p class="digital-date">{{ now | date:'medium' | uppercase }}</p>
+        <p class="timezone-stamp">ZONE: {{ now | date:'zzz' }}</p>
+      </div>
+    </section>
+
+    <section class="intel-report">
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-val">24/7</span>
+          <span class="stat-tag">Uptime</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">1k+</span>
+          <span class="stat-tag">Users</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">50+</span>
+          <span class="stat-tag">Nodes</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="abyssal-footer">
+      <button class="st-btn" routerLink="/contact">
+        INITIATE CONTACT
+        <span class="btn-flare"></span>
+      </button>
+    </footer>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="upside-down-home">
+  <div class="scanlines"></div>
+  <div class="vignette-mask"></div>
+
+  <div class="home-viewport">
+    <header class="home-header">
+      <h1 class="stranger-title">Welcome</h1>
+      <h2 class="sub-glitch">Remote Records Intercepted</h2>
+      <div class="header-accent"></div>
+    </header>
+
+    <section class="updates-panel">
+      <h2 class="section-label">LATEST_LOGS</h2>
+      <p class="timestamp">STARDATE: {{ today | date:'fullDate' | uppercase }}</p>
+
+      <ul class="post-list">
+        <li *ngFor="let post of posts$ | async | slice:0:5" class="post-card">
+          <div class="card-content">
+            <strong class="post-title">{{ post.title | titleCaseWords }}</strong>
+            <p class="post-body">{{ post.body }}</p>
+          </div>
+          <div class="red-flicker-bar"></div>
+        </li>
+      </ul>
+    </section>
+  </div>
+</div>

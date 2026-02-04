@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@700&family=Courier+Prime&family=Special+Elite&display=swap');
+
+:host {
+  display: block;
+  background-color: #050505;
+  color: #e0e0e0;
+  min-height: 100vh;
+  font-family: 'Courier Prime', monospace;
+  overflow-x: hidden;
+}
+
+/* Centering Logic */
+.centering-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Horizontal center */
+  justify-content: center; /* Vertical alignment */
+  text-align: center; /* Center text within elements */
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+}
+
+.dossier-header, .folder-content, .system-time, .intel-report, .abyssal-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+/* Typography Adjustments */
+.st-logo-text {
+  font-family: 'Crimson Text', serif;
+  font-size: clamp(3rem, 8vw, 5rem);
+  color: #db202c;
+  margin: 0;
+  text-shadow: 0 0 15px rgba(219, 32, 44, 0.7);
+  letter-spacing: -2px;
+}
+
+.typewriter-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #bbb;
+  border-left: none; /* Removed side border to maintain center balance */
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+  padding: 20px 0;
+  max-width: 700px;
+}
+
+/* Grid Centering */
+.nodes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.node-box {
+  border: 1px solid #222;
+  padding: 2rem;
+  background: #0a0a0a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.3s;
+}
+
+/* Stats Row Centering */
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-val {
+  font-size: 2.5rem;
+  color: #db202c;
+  font-family: 'Special Elite', cursive;
+}
+
+/* Elements remaining from previous design */
+.header-seal {
+  border: 3px solid #db202c;
+  color: #db202c;
+  padding: 5px 15px;
+  font-weight: bold;
+  transform: rotate(-3deg);
+  margin-bottom: 10px;
+}
+
+.blood-line {
+  height: 3px;
+  background: #db202c;
+  width: 200px;
+  margin-top: 10px;
+  box-shadow: 0 0 10px #db202c;
+}
+
+.st-btn {
+  background: transparent;
+  border: 2px solid #db202c;
+  color: #db202c;
+  padding: 1rem 4rem;
+  font-family: 'Crimson Text', serif;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.st-btn:hover {
+  background: #db202c;
+  color: #fff;
+  box-shadow: 0 0 40px #db202c;
+}
+
+.vhs-overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+  background-size: 100% 4px;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.2;
+}

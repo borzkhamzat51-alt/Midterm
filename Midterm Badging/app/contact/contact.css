@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@700&family=Share+Tech+Mono&display=swap');
+
+:host {
+  display: block;
+  background-color: #050505;
+  color: #fff;
+  min-height: 100vh;
+  font-family: 'Share Tech Mono', monospace;
+  overflow-x: hidden;
+}
+
+.upside-down-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* --- TITLE STYLING --- */
+.stranger-title {
+  font-family: 'Crimson Text', serif;
+  font-size: 4rem;
+  color: #db202c;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(219, 32, 44, 0.6);
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  color: #444;
+  letter-spacing: 3px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.blood-divider {
+  height: 2px;
+  background: #db202c;
+  width: 150px;
+  margin: 20px auto 40px;
+  box-shadow: 0 0 10px #db202c;
+}
+
+/* --- TERMINAL FORM --- */
+.contact-interface {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+}
+
+.form-wrapper {
+  background: #0a0a0a;
+  border: 1px solid #222;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+}
+
+.terminal-header {
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background: #050505;
+  padding: 0 10px;
+  color: #db202c;
+  font-size: 0.8rem;
+}
+
+.form-group label {
+  display: block;
+  color: #db202c;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  background: #111;
+  border: 1px solid #333;
+  color: #fff;
+  padding: 1rem;
+  font-family: 'Share Tech Mono', monospace;
+  margin-bottom: 1.5rem;
+  box-sizing: border-box;
+}
+
+.form-input:focus, .form-textarea:focus {
+  border-color: #db202c;
+  outline: none;
+  box-shadow: 0 0 10px rgba(219, 32, 44, 0.2);
+}
+
+.st-submit-btn {
+  width: 100%;
+  background: #db202c;
+  color: #fff;
+  border: none;
+  padding: 1.25rem;
+  font-family: 'Crimson Text', serif;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.st-submit-btn:hover {
+  background: #90131b;
+  box-shadow: 0 0 20px #db202c;
+}
+
+/* --- LIVE INTERCEPT PREVIEW --- */
+.preview-intercept {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(20, 0, 0, 0.2);
+  border: 1px dashed #db202c;
+  padding: 2rem;
+  position: relative;
+}
+
+.signal-dot {
+  width: 10px;
+  height: 10px;
+  background: #db202c;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+.data-line {
+  background: rgba(0,0,0,0.5);
+  padding: 10px;
+  margin-bottom: 5px;
+  border-left: 2px solid #db202c;
+}
+
+.label { color: #db202c; margin-right: 10px; }
+
+.flicker-text {
+  font-size: 0.7rem;
+  color: #444;
+  animation: textFlicker 2s infinite;
+}
+
+@keyframes textFlicker { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+/* --- ATMOSPHERIC --- */
+.scanlines {
+  position: fixed; inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 10;
+}

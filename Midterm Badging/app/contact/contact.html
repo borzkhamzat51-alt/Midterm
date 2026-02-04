@@ -1,0 +1,61 @@
+<div class="upside-down-contact">
+  <div class="scanlines"></div>
+  <div class="vignette-overlay"></div>
+
+  <section class="hero-section">
+    <h1 class="stranger-title">Contact Us</h1>
+    <p class="hero-subtitle">SIGNAL STATUS: ENCRYPTED // SEND MESSAGE TO THE VOID</p>
+    <div class="blood-divider"></div>
+  </section>
+
+  <div class="contact-interface">
+    <div class="form-wrapper">
+      <div class="terminal-header">COMMUNICATION_UPLINK</div>
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+        <div class="form-group">
+          <label for="name">NAME_ID:</label>
+          <input id="name" formControlName="name" placeholder="IDENTIFY YOURSELF" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label for="email">EMAIL_NODE:</label>
+          <input id="email" formControlName="email" placeholder="NODE@VOICE.LAB" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label for="message">TRANSMISSION:</label>
+          <textarea id="message" formControlName="message" placeholder="TYPE YOUR MESSAGE..." class="form-textarea" rows="5"></textarea>
+        </div>
+
+        <button type="submit" class="st-submit-btn">
+          SUBMIT_TRANSMISSION
+          <span class="button-icon">→</span>
+        </button>
+      </form>
+    </div>
+
+    <div *ngIf="contactForm.dirty || submitted" class="preview-intercept">
+      <div class="preview-header">
+        <div class="signal-indicator">
+          <span class="signal-dot"></span>
+          <h2>LIVE SIGNAL INTERCEPT</h2>
+        </div>
+        <span class="preview-badge">MONITORING</span>
+      </div>
+      <div class="preview-content">
+        <div class="data-line">
+          <span class="label">ID:</span> {{ contactForm.value.name | uppercase }}
+        </div>
+        <div class="data-line">
+          <span class="label">NODE:</span> {{ contactForm.value.email }}
+        </div>
+        <div class="data-line message-line">
+          <span class="label">MSG:</span> {{ contactForm.value.message }}
+        </div>
+      </div>
+      <div class="preview-footer">
+        <span class="flicker-text">DECRYPTING REAL-TIME DATA...</span>
+      </div>
+    </div>
+  </div>
+</div>
